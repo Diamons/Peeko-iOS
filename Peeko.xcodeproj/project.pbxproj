@@ -21,6 +21,13 @@
 		CAA5AE511908A9F6005B36F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE331908A9F6005B36F2 /* UIKit.framework */; };
 		CAA5AE591908A9F6005B36F2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA5AE571908A9F6005B36F2 /* InfoPlist.strings */; };
 		CAA5AE5B1908A9F6005B36F2 /* PeekoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA5AE5A1908A9F6005B36F2 /* PeekoTests.m */; };
+		CAA5AE651908AEB4005B36F2 /* Mapbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE641908AEB4005B36F2 /* Mapbox.framework */; };
+		CAA5AE6A1908AFC8005B36F2 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE661908AFC8005B36F2 /* CoreLocation.framework */; };
+		CAA5AE6B1908AFC8005B36F2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE671908AFC8005B36F2 /* libsqlite3.dylib */; };
+		CAA5AE6C1908AFC8005B36F2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE681908AFC8005B36F2 /* libz.dylib */; };
+		CAA5AE6D1908AFC8005B36F2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE691908AFC8005B36F2 /* QuartzCore.framework */; };
+		CAA5AE6F1908AFED005B36F2 /* Mapbox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CAA5AE6E1908AFED005B36F2 /* Mapbox.bundle */; };
+		CAA5AE75190A9CBF005B36F2 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA5AE74190A9CBF005B36F2 /* MapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +60,14 @@
 		CAA5AE561908A9F6005B36F2 /* PeekoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PeekoTests-Info.plist"; sourceTree = "<group>"; };
 		CAA5AE581908A9F6005B36F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CAA5AE5A1908A9F6005B36F2 /* PeekoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeekoTests.m; sourceTree = "<group>"; };
+		CAA5AE641908AEB4005B36F2 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
+		CAA5AE661908AFC8005B36F2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		CAA5AE671908AFC8005B36F2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		CAA5AE681908AFC8005B36F2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		CAA5AE691908AFC8005B36F2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		CAA5AE6E1908AFED005B36F2 /* Mapbox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Mapbox.bundle; sourceTree = "<group>"; };
+		CAA5AE73190A9CBF005B36F2 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		CAA5AE74190A9CBF005B36F2 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,9 +75,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAA5AE6A1908AFC8005B36F2 /* CoreLocation.framework in Frameworks */,
+				CAA5AE6B1908AFC8005B36F2 /* libsqlite3.dylib in Frameworks */,
+				CAA5AE6C1908AFC8005B36F2 /* libz.dylib in Frameworks */,
+				CAA5AE6D1908AFC8005B36F2 /* QuartzCore.framework in Frameworks */,
 				CAA5AE321908A9F6005B36F2 /* CoreGraphics.framework in Frameworks */,
 				CAA5AE341908A9F6005B36F2 /* UIKit.framework in Frameworks */,
 				CAA5AE301908A9F6005B36F2 /* Foundation.framework in Frameworks */,
+				CAA5AE651908AEB4005B36F2 /* Mapbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +102,7 @@
 		CAA5AE231908A9F6005B36F2 = {
 			isa = PBXGroup;
 			children = (
+				CAA5AE6E1908AFED005B36F2 /* Mapbox.bundle */,
 				CAA5AE351908A9F6005B36F2 /* Peeko */,
 				CAA5AE541908A9F6005B36F2 /* PeekoTests */,
 				CAA5AE2E1908A9F6005B36F2 /* Frameworks */,
@@ -101,6 +122,10 @@
 		CAA5AE2E1908A9F6005B36F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CAA5AE661908AFC8005B36F2 /* CoreLocation.framework */,
+				CAA5AE671908AFC8005B36F2 /* libsqlite3.dylib */,
+				CAA5AE681908AFC8005B36F2 /* libz.dylib */,
+				CAA5AE691908AFC8005B36F2 /* QuartzCore.framework */,
 				CAA5AE2F1908A9F6005B36F2 /* Foundation.framework */,
 				CAA5AE311908A9F6005B36F2 /* CoreGraphics.framework */,
 				CAA5AE331908A9F6005B36F2 /* UIKit.framework */,
@@ -115,6 +140,8 @@
 				CAA5AE3E1908A9F6005B36F2 /* AppDelegate.h */,
 				CAA5AE3F1908A9F6005B36F2 /* AppDelegate.m */,
 				CAA5AE411908A9F6005B36F2 /* Main.storyboard */,
+				CAA5AE73190A9CBF005B36F2 /* MapViewController.h */,
+				CAA5AE74190A9CBF005B36F2 /* MapViewController.m */,
 				CAA5AE441908A9F6005B36F2 /* ViewController.h */,
 				CAA5AE451908A9F6005B36F2 /* ViewController.m */,
 				CAA5AE471908A9F6005B36F2 /* Images.xcassets */,
@@ -126,6 +153,7 @@
 		CAA5AE361908A9F6005B36F2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CAA5AE641908AEB4005B36F2 /* Mapbox.framework */,
 				CAA5AE371908A9F6005B36F2 /* Peeko-Info.plist */,
 				CAA5AE381908A9F6005B36F2 /* InfoPlist.strings */,
 				CAA5AE3B1908A9F6005B36F2 /* main.m */,
@@ -199,6 +227,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Shahruk Khan and Minling Zhao";
 				TargetAttributes = {
+					CAA5AE2B1908A9F6005B36F2 = {
+						DevelopmentTeam = FUZYN747GN;
+					};
 					CAA5AE4C1908A9F6005B36F2 = {
 						TestTargetID = CAA5AE2B1908A9F6005B36F2;
 					};
@@ -228,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAA5AE6F1908AFED005B36F2 /* Mapbox.bundle in Resources */,
 				CAA5AE481908A9F6005B36F2 /* Images.xcassets in Resources */,
 				CAA5AE3A1908A9F6005B36F2 /* InfoPlist.strings in Resources */,
 				CAA5AE431908A9F6005B36F2 /* Main.storyboard in Resources */,
@@ -252,6 +284,7 @@
 				CAA5AE461908A9F6005B36F2 /* ViewController.m in Sources */,
 				CAA5AE401908A9F6005B36F2 /* AppDelegate.m in Sources */,
 				CAA5AE3C1908A9F6005B36F2 /* main.m in Sources */,
+				CAA5AE75190A9CBF005B36F2 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,6 +368,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -366,6 +400,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -376,10 +411,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Peeko",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Peeko/Peeko-Prefix.pch";
 				INFOPLIST_FILE = "Peeko/Peeko-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -389,10 +430,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Peeko",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Peeko/Peeko-Prefix.pch";
 				INFOPLIST_FILE = "Peeko/Peeko-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

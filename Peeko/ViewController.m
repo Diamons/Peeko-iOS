@@ -17,6 +17,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.EmailLoginField.delegate = self;
+    self.PasswordLoginField.delegate = self;
+    
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -26,4 +30,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)LoginButtonPressed:(id)sender {
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return NO;
+}
 @end
