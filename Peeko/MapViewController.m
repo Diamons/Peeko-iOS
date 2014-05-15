@@ -7,6 +7,8 @@
 //
 
 #import "MapViewController.h"
+#import "QuartzCore/CALayer.h"
+#import "MapDetailViewController.h"
 
 @interface MapViewController () <CLLocationManagerDelegate>
 
@@ -17,7 +19,7 @@
 RMMapView *mapView;
 float MyLastLatitude = 0;
 float MyLastLongitude = 0;
-NSString *baseURL = @"http://peeko.dev/";
+NSString *baseURL = @"http://peeko.dev.192.168.1.16.xip.io/";
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,6 +35,7 @@ NSString *baseURL = @"http://peeko.dev/";
 {
     [super viewDidLoad];
     _ArrayOfImages = [[NSMutableDictionary alloc] init];
+    _ArrayOfPromotions = [[NSMutableDictionary alloc] init];
     
     // Do any additional setup after loading the view.
     
@@ -40,13 +43,13 @@ NSString *baseURL = @"http://peeko.dev/";
     mapView = [[RMMapView alloc] initWithFrame:_MapContainer.bounds andTilesource:interactiveSource];
     
     mapView.delegate = self;
-    
-    mapView.zoom = 4;
+    mapView.showsUserLocation = true;
+    mapView.zoom = 16;
     
     //mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     
-    mapView.adjustTilesForRetinaDisplay = YES; // these tiles aren't designed specifically for retina, so make them legible
-    mapView.userTrackingMode = RMUserTrackingModeFollowWithHeading;
+    //mapView.adjustTilesForRetinaDisplay = YES; // these tiles aren't designed specifically for retina, so make them legible
+    //mapView.userTrackingMode = RMUserTrackingModeFollowWithHeading;
     [_MapContainer addSubview:mapView];
     
     //Get the location now
@@ -83,6 +86,9 @@ NSString *baseURL = @"http://peeko.dev/";
     //If moving at least a few blocks, then get the new markers for stores. This way we're not firing a request to the server every 4 seconds.
     bool proceed = [self checkWithLastLocation:latitude withLongitude:longitude];
     if(proceed == true){
+        
+        mapView.centerCoordinate = CLLocationCoordinate2DMake(latitude, longitude);
+        
         //Store these numbers for future reference
         MyLastLatitude = latitude;
         //NSLog(@"Lat set to: %f", MyLastLatitude);
@@ -116,11 +122,13 @@ NSString *baseURL = @"http://peeko.dev/";
         float latitude = [[store objectForKey:@"latitude"] doubleValue];
         float longitude = [[store objectForKey:@"longitude"] doubleValue];
         NSString *icon = [store objectForKey:@"icon"];
+        NSDictionary *promotions = [store objectForKey:@"promotions"];
         NSString *name = [store objectForKey:@"name"];
 
         NSNumber *index = [NSNumber numberWithInt:[[store objectForKey:@"id"] intValue]];
         
         [_ArrayOfImages setObject:icon forKey:index];
+        [_ArrayOfPromotions setObject:promotions forKey:index];
         //NSLog(@"RESULT:%@",_ArrayOfImages[index]);
         
         CLLocationCoordinate2D coordinate =CLLocationCoordinate2DMake(latitude, longitude);
@@ -129,6 +137,7 @@ NSString *baseURL = @"http://peeko.dev/";
         [mapView addAnnotation:annotation];
         //NSString *iconURL = [_ArrayOfImages objectForKey:1];
        // NSLog(@"FOR #1: %i", ]);
+        //NSLog(@"%@", _ArrayOfPromotions);
     }
 }
 
@@ -143,16 +152,7 @@ NSString *baseURL = @"http://peeko.dev/";
     
     //Set up remote image ICON for the map
     NSString *iconURL = [_ArrayOfImages objectForKey:index];
-    NSURL *baseURLTemp = [NSURL URLWithString:baseURL];
-    
-    iconURL = [iconURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    iconURL = [iconURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *imageURL = [NSURL URLWithString:iconURL relativeToURL:baseURLTemp];
-    
-    //Now generate the actual image
-    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
-    
-    
+    NSData *imageData = [self imageFromUrl:iconURL];
     RMMarker *marker;
     marker = [[RMMarker alloc] initWithUIImage:[UIImage imageWithData:imageData]];
     marker.canShowCallout = true;
@@ -188,4 +188,80 @@ NSString *baseURL = @"http://peeko.dev/";
     //By default let's not update the location unless we absolutely have to
     return false;
 }
+
+- (IBAction)NavLocateButtonPressed:(id)sender {
+    mapView.centerCoordinate = CLLocationCoordinate2DMake(MyLastLatitude, MyLastLongitude);
+
+}
+
+- (void)tapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
+    NSNumber *index = [NSNumber numberWithInt:[annotation.userInfo intValue]];
+    NSDictionary *promotions = [_ArrayOfPromotions objectForKey:index];
+    //NSLog(@"TEST #1: %@", [promotions objectForKey:@"image"]);
+    for(NSDictionary *promo in promotions){
+        //NSLog(@"%@", [promo objectForKey:@"image"]);
+        
+        
+        /*UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 470, 320, 90)];
+        //imageView.contentMode = UIViewContentModeScaleAspectFit;
+        imageView.image = [UIImage imageWithData:[self imageFromUrl:[promo objectForKey:@"image"]]];
+        
+        //Add shadow
+        imageView.layer.shadowColor = [UIColor grayColor].CGColor;
+        imageView.layer.shadowOffset = CGSizeMake(0,1);
+        imageView.layer.shadowOpacity = 1;
+        imageView.clipsToBounds = NO;
+        [self.view addSubview:imageView];
+         */
+        
+        /* Button implementation
+        UIImage *banner = [UIImage imageWithData:[self imageFromUrl:[promo objectForKey:@"image"]]];
+        UIButton *bannerButton = [[UIButton alloc] init];
+        bannerButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        bannerButton.frame = CGRectMake(0, 470, 320, 90);
+        bannerButton.layer.shadowColor = [UIColor grayColor].CGColor;
+        bannerButton.layer.shadowOffset = CGSizeMake(0, 1);
+        bannerButton.layer.shadowOpacity = 1;
+        [bannerButton setBackgroundImage:banner forState:UIControlStateNormal];
+        
+        [bannerButton addTarget:self action:@selector(BannerPressed) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview: bannerButton];
+         */
+        
+        
+    }
+}
+
+-(void)BannerPressed{
+    /*
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    MapDetailViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"MapDetailViewController"];
+    [self presentViewController:viewController animated:YES completion: NULL];
+     */
+}
+-(NSData*)imageFromUrl:(NSString*)iconURL{
+    NSURL *baseURLTemp = [NSURL URLWithString:baseURL];
+    
+    iconURL = [iconURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    iconURL = [iconURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *imageURL = [NSURL URLWithString:iconURL relativeToURL:baseURLTemp];
+    //NSLog(@"URL %@", imageURL);
+    //Now generate the actual image
+    NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
+    return imageData;
+}
+
+-(UIColor *)colorFromHexString:(NSString *)hexString {
+    unsigned rgbValue = 0;
+    NSScanner *scanner = [NSScanner scannerWithString:hexString];
+    [scanner setScanLocation:1]; // bypass '#' character
+    [scanner scanHexInt:&rgbValue];
+    return [UIColor colorWithRed:((rgbValue & 0xFF0000) >> 16)/255.0 green:((rgbValue & 0xFF00) >> 8)/255.0 blue:(rgbValue & 0xFF)/255.0 alpha:1.0];
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 @end
