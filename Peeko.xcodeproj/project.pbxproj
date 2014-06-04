@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CA2944B7191D086A0075D831 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2944B6191D086A0075D831 /* MapKit.framework */; };
-		CA4B1316192276F5005A6D2D /* MapDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA4B1315192276F5005A6D2D /* MapDetailViewController.m */; };
 		CAA5AE301908A9F6005B36F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE2F1908A9F6005B36F2 /* Foundation.framework */; };
 		CAA5AE321908A9F6005B36F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE311908A9F6005B36F2 /* CoreGraphics.framework */; };
 		CAA5AE341908A9F6005B36F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE331908A9F6005B36F2 /* UIKit.framework */; };
@@ -30,6 +29,7 @@
 		CAA5AE6D1908AFC8005B36F2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE691908AFC8005B36F2 /* QuartzCore.framework */; };
 		CAA5AE6F1908AFED005B36F2 /* Mapbox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CAA5AE6E1908AFED005B36F2 /* Mapbox.bundle */; };
 		CAA5AE75190A9CBF005B36F2 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA5AE74190A9CBF005B36F2 /* MapViewController.m */; };
+		CAEEAE631925AD5F005AA927 /* Phone Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CAEEAE621925AD5F005AA927 /* Phone Icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,8 +44,6 @@
 
 /* Begin PBXFileReference section */
 		CA2944B6191D086A0075D831 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		CA4B1314192276F5005A6D2D /* MapDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapDetailViewController.h; sourceTree = "<group>"; };
-		CA4B1315192276F5005A6D2D /* MapDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapDetailViewController.m; sourceTree = "<group>"; };
 		CAA5AE2C1908A9F6005B36F2 /* Peeko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peeko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA5AE2F1908A9F6005B36F2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CAA5AE311908A9F6005B36F2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -73,6 +71,7 @@
 		CAA5AE6E1908AFED005B36F2 /* Mapbox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Mapbox.bundle; sourceTree = "<group>"; };
 		CAA5AE73190A9CBF005B36F2 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		CAA5AE74190A9CBF005B36F2 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		CAEEAE621925AD5F005AA927 /* Phone Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Phone Icon.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,8 +150,6 @@
 				CAA5AE451908A9F6005B36F2 /* ViewController.m */,
 				CAA5AE73190A9CBF005B36F2 /* MapViewController.h */,
 				CAA5AE74190A9CBF005B36F2 /* MapViewController.m */,
-				CA4B1314192276F5005A6D2D /* MapDetailViewController.h */,
-				CA4B1315192276F5005A6D2D /* MapDetailViewController.m */,
 				CAA5AE471908A9F6005B36F2 /* Images.xcassets */,
 				CAA5AE361908A9F6005B36F2 /* Supporting Files */,
 			);
@@ -162,6 +159,7 @@
 		CAA5AE361908A9F6005B36F2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CAEEAE621925AD5F005AA927 /* Phone Icon.png */,
 				CAA5AE641908AEB4005B36F2 /* Mapbox.framework */,
 				CAA5AE371908A9F6005B36F2 /* Peeko-Info.plist */,
 				CAA5AE381908A9F6005B36F2 /* InfoPlist.strings */,
@@ -271,6 +269,7 @@
 				CAA5AE6F1908AFED005B36F2 /* Mapbox.bundle in Resources */,
 				CAA5AE481908A9F6005B36F2 /* Images.xcassets in Resources */,
 				CAA5AE3A1908A9F6005B36F2 /* InfoPlist.strings in Resources */,
+				CAEEAE631925AD5F005AA927 /* Phone Icon.png in Resources */,
 				CAA5AE431908A9F6005B36F2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,7 +293,6 @@
 				CAA5AE401908A9F6005B36F2 /* AppDelegate.m in Sources */,
 				CAA5AE3C1908A9F6005B36F2 /* main.m in Sources */,
 				CAA5AE75190A9CBF005B36F2 /* MapViewController.m in Sources */,
-				CA4B1316192276F5005A6D2D /* MapDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

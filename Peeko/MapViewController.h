@@ -26,7 +26,9 @@
 -(BOOL)checkWithLastLocation:(float)latitude withLongitude:(float)longitude;
 -(IBAction)NavLocateButtonPressed:(id)sender;
 -(NSData*)imageFromUrl:(NSString*)iconURL;
+-(void)GenerateFullPromoView;
 -(UIColor *)colorFromHexString:(NSString *)hexString;
+
 extern float MyLastLatitude;
 extern float MyLastLongitude;
 @end

@@ -8,7 +8,6 @@
 
 #import "MapViewController.h"
 #import "QuartzCore/CALayer.h"
-#import "MapDetailViewController.h"
 
 @interface MapViewController () <CLLocationManagerDelegate>
 
@@ -16,11 +15,22 @@
 
 @implementation MapViewController
 
+//Global variables
 RMMapView *mapView;
 float MyLastLatitude = 0;
 float MyLastLongitude = 0;
+
+bool minimizedDetail = false;
+
+//NSString *baseURL = @"http://peekoapp.com/";
+//NSString *baseURL = @"http://peeko.dev/";
 NSString *baseURL = @"http://peeko.dev.192.168.1.16.xip.io/";
 
+UIView *detailView;
+bool alertedBefore = false;
+
+UIButton *bannerButton;
+NSNumber *currentPromotionIndex;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,7 +58,7 @@ NSString *baseURL = @"http://peeko.dev.192.168.1.16.xip.io/";
     
     //mapView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     
-    //mapView.adjustTilesForRetinaDisplay = YES; // these tiles aren't designed specifically for retina, so make them legible
+    mapView.adjustTilesForRetinaDisplay = YES; // these tiles aren't designed specifically for retina, so make them legible
     //mapView.userTrackingMode = RMUserTrackingModeFollowWithHeading;
     [_MapContainer addSubview:mapView];
     
@@ -73,9 +83,19 @@ NSString *baseURL = @"http://peeko.dev.192.168.1.16.xip.io/";
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error{
-    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error getting your location." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    //Only show the alert once and center in on Times Square
+    if(!alertedBefore){
+        UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"There was an error getting your location." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        
+        [errorAlert show];
+        alertedBefore = true;
+        float tempLat = 40.759039;
+        float tempLong =-73.984680;
+        mapView.centerCoordinate = CLLocationCoordinate2DMake(tempLat, tempLong);
+        //Show markers
+        [self GetStoreMarkers:tempLat withLongitude:tempLong];
+    }
     
-    [errorAlert show];
 }
 
 -(void)locationManager: (CLLocationManager *)manager didUpdateLocations:(NSArray *)locations{
@@ -154,7 +174,7 @@ NSString *baseURL = @"http://peeko.dev.192.168.1.16.xip.io/";
     NSString *iconURL = [_ArrayOfImages objectForKey:index];
     NSData *imageData = [self imageFromUrl:iconURL];
     RMMarker *marker;
-    marker = [[RMMarker alloc] initWithUIImage:[UIImage imageWithData:imageData]];
+    marker = [[RMMarker alloc] initWithUIImage:[UIImage imageWithData:imageData scale: 2] anchorPoint:CGPointMake(0.5, 1)];
     marker.canShowCallout = true;
     
     
@@ -195,8 +215,8 @@ NSString *baseURL = @"http://peeko.dev.192.168.1.16.xip.io/";
 }
 
 - (void)tapOnAnnotation:(RMAnnotation *)annotation onMap:(RMMapView *)map{
-    NSNumber *index = [NSNumber numberWithInt:[annotation.userInfo intValue]];
-    NSDictionary *promotions = [_ArrayOfPromotions objectForKey:index];
+    currentPromotionIndex = [NSNumber numberWithInt:[annotation.userInfo intValue]];
+    NSDictionary *promotions = [_ArrayOfPromotions objectForKey:currentPromotionIndex];
     //NSLog(@"TEST #1: %@", [promotions objectForKey:@"image"]);
     for(NSDictionary *promo in promotions){
         //NSLog(@"%@", [promo objectForKey:@"image"]);
@@ -214,31 +234,87 @@ NSString *baseURL = @"http://peeko.dev.192.168.1.16.xip.io/";
         [self.view addSubview:imageView];
          */
         
-        /* Button implementation
+        detailView = [[UIView alloc] init];
+        detailView.frame = CGRectMake(0, 470, 320, 100);
+        detailView.layer.shadowColor = [UIColor grayColor].CGColor;
+        //detailView.backgroundColor = [[self colorFromHexString:@"#FFFFFF"] colorWithAlphaComponent:.4];
+        detailView.backgroundColor = [UIColor colorWithWhite: 1.0 alpha: 1];
+        detailView.layer.shadowOffset = CGSizeMake(0, 4);
+        detailView.layer.shadowOpacity = 1;
+        [self.view addSubview: detailView];
+        
+        /* Button implementation*/
         UIImage *banner = [UIImage imageWithData:[self imageFromUrl:[promo objectForKey:@"image"]]];
-        UIButton *bannerButton = [[UIButton alloc] init];
+        bannerButton = [[UIButton alloc] init];
         bannerButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        bannerButton.frame = CGRectMake(0, 470, 320, 90);
+        bannerButton.frame = CGRectMake(0, 0, 320, 100);
         bannerButton.layer.shadowColor = [UIColor grayColor].CGColor;
         bannerButton.layer.shadowOffset = CGSizeMake(0, 1);
         bannerButton.layer.shadowOpacity = 1;
+        
         [bannerButton setBackgroundImage:banner forState:UIControlStateNormal];
-        
-        [bannerButton addTarget:self action:@selector(BannerPressed) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview: bannerButton];
-         */
-        
+        [bannerButton addTarget:self action:@selector(BannerPressed:) forControlEvents:UIControlEventTouchUpInside];
+        [detailView addSubview: bannerButton];
+
         
     }
 }
 
--(void)BannerPressed{
+-(void)BannerPressed:(id)sender{
+    if(!minimizedDetail){
+        [UIView animateWithDuration: 0.5 animations: ^{
+            detailView.frame = CGRectMake(0, 62, 320, 400);
+            //[bannerButton removeFromSuperview];
+            [self GenerateFullPromoView];
+
+        }];
+        minimizedDetail = !minimizedDetail;
+    }else{
+        [self minimizeDetail];
+    }
+    
+        //[self.view addSubview:detailView];
     /*
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     MapDetailViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"MapDetailViewController"];
     [self presentViewController:viewController animated:YES completion: NULL];
      */
 }
+
+-(void)GenerateFullPromoView{
+    UISwipeGestureRecognizer *gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(DetailSwiped:)];
+    [gestureRecognizer setDirection: (UISwipeGestureRecognizerDirectionDown)];
+    [detailView addGestureRecognizer:gestureRecognizer];
+    /*
+    NSDictionary *promotions = [_ArrayOfPromotions objectForKey:currentPromotionIndex];
+    for(NSDictionary *promo in promotions){
+       // UIImage *banner = [UIImage imageWithData:[self imageFromUrl:[promo objectForKey:@"image"]]];
+        //UIImageView *bannerImage = [[UIImageView alloc] initWithImage: banner];
+        //bannerImage.frame = CGRectMake(0, 0, 320, 100);
+        //bannerImage.layer.shadowOpacity = 0;
+        //[detailView addSubview: bannerImage];
+        
+        UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(bannerImage, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+    }
+    */
+
+}
+
+-(void)DetailSwiped:(UISwipeGestureRecognizer *)recognizer{
+    [self minimizeDetail];
+}
+
+-(void)minimizeDetail{
+    [UIView animateWithDuration: 0.5 animations: ^{
+        detailView.frame = CGRectMake(0, 470, 320, 100);
+        //[bannerButton removeFromSuperview];
+        [self GenerateFullPromoView];
+        
+    }];
+    
+    minimizedDetail = !minimizedDetail;
+}
+
 -(NSData*)imageFromUrl:(NSString*)iconURL{
     NSURL *baseURLTemp = [NSURL URLWithString:baseURL];
     
