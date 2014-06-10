@@ -23,9 +23,9 @@ float MyLastLongitude = 0;
 bool minimizedDetail = false;
 bool webviewActive = false;
 
-//NSString *baseURL = @"http://peekoapp.com/";
+NSString *baseURL = @"http://peekoapp.com/";
 //NSString *baseURL = @"http://peeko.dev/";
-NSString *baseURL = @"http://peeko.dev.192.168.1.16.xip.io/";
+//NSString *baseURL = @"http://peeko.dev.192.168.1.16.xip.io/";
 
 NSMutableArray *photos;
 UIView *detailView;
@@ -52,7 +52,7 @@ Pinterest*  _pinterest;
     _ArrayOfPromotions = [[NSMutableDictionary alloc] init];
     _ArrayOfStores = [[NSMutableDictionary alloc] init];
     bannerButton = [[UIButton alloc] init];
-    _pinterest = [[Pinterest alloc] initWithClientId:@"1234" urlSchemeSuffix:@"prod"];
+    _pinterest = [[Pinterest alloc] initWithClientId:@"1438379" urlSchemeSuffix:@"peeko"];
     [self toggleNavigationButtons];
     // Do any additional setup after loading the view.
     
@@ -389,7 +389,7 @@ Pinterest*  _pinterest;
 }
 
 - (IBAction)FacebookButtonPressed:(id)sender {
-    
+    [FBAppEvents logEvent:@"Call Placed"];
     NSDictionary *store = [_ArrayOfStores objectForKey:currentPromotionIndex];
     NSMutableString *icon = [[NSMutableString alloc] initWithString:[store objectForKey:@"icon"]];
     [icon insertString:baseURL atIndex:0];
@@ -422,10 +422,20 @@ Pinterest*  _pinterest;
 }
 
 - (IBAction)PinterestButtonPressed:(id)sender {
+    NSDictionary *store = [_ArrayOfStores objectForKey:currentPromotionIndex];
+    NSMutableString *icon = [[NSMutableString alloc] initWithString:[store objectForKey:@"icon"]];
+    [icon insertString:baseURL atIndex:0];
     
-    [_pinterest createPinWithImageURL:@"http://placekitten.com/500/400"
-                            sourceURL:@"http://placekitten.com"
-                          description:@"Pinning from Pin It Demo"];
+    NSMutableString *promoName;
+    
+    NSDictionary *promotions = [_ArrayOfPromotions objectForKey:currentPromotionIndex];
+    for(NSDictionary __strong *promo in promotions){
+        promoName = [[NSMutableString alloc] initWithString:[promo objectForKey:@"name"]];
+    }
+    
+    [_pinterest createPinWithImageURL:[NSURL URLWithString:icon]
+                            sourceURL:[NSURL URLWithString:baseURL]
+                          description:promoName];
 }
 
 -(void)CallButtonPressed:(id)sender{
@@ -433,8 +443,11 @@ Pinterest*  _pinterest;
     NSDictionary *store = [_ArrayOfStores objectForKey:currentPromotionIndex];
     phone = [[NSMutableString alloc] initWithString:[store objectForKey:@"phone"]];
     
+    [FBAppEvents logEvent:phone];
+    
     //Make 718-444-4444 -> tel:718-444-4444 to open in Phone appv
     [phone insertString:@"telprompt:" atIndex:0];
+    
     NSLog(@"%@", phone);
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phone]];
