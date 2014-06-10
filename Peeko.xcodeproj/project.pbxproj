@@ -7,16 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA28305D1946C4CA008E936E /* Pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA28305A1946C4CA008E936E /* Pinterest.framework */; };
+		CA28305E1946C4CA008E936E /* PinterestSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA28305C1946C4CA008E936E /* PinterestSDKResources.bundle */; };
 		CA2944B7191D086A0075D831 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2944B6191D086A0075D831 /* MapKit.framework */; };
+		CA426255194153E100044DF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA426254194153E100044DF2 /* Main.storyboard */; };
+		CA61EE0E193FD35C00190E7A /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = CA61EE0D193FD35C00190E7A /* splash.png */; };
+		CAA02FDD1940DDDF005CDC69 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA02FDC1940DDDF005CDC69 /* MessageUI.framework */; };
+		CAA02FDF1940DDEF005CDC69 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA02FDE1940DDEF005CDC69 /* AssetsLibrary.framework */; };
+		CAA02FE11940DDF5005CDC69 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA02FE01940DDF5005CDC69 /* ImageIO.framework */; };
 		CAA5AE301908A9F6005B36F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE2F1908A9F6005B36F2 /* Foundation.framework */; };
 		CAA5AE321908A9F6005B36F2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE311908A9F6005B36F2 /* CoreGraphics.framework */; };
 		CAA5AE341908A9F6005B36F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE331908A9F6005B36F2 /* UIKit.framework */; };
 		CAA5AE3A1908A9F6005B36F2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CAA5AE381908A9F6005B36F2 /* InfoPlist.strings */; };
 		CAA5AE3C1908A9F6005B36F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA5AE3B1908A9F6005B36F2 /* main.m */; };
 		CAA5AE401908A9F6005B36F2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA5AE3F1908A9F6005B36F2 /* AppDelegate.m */; };
-		CAA5AE431908A9F6005B36F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAA5AE411908A9F6005B36F2 /* Main.storyboard */; };
 		CAA5AE461908A9F6005B36F2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA5AE451908A9F6005B36F2 /* ViewController.m */; };
-		CAA5AE481908A9F6005B36F2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAA5AE471908A9F6005B36F2 /* Images.xcassets */; };
 		CAA5AE4F1908A9F6005B36F2 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE4E1908A9F6005B36F2 /* XCTest.framework */; };
 		CAA5AE501908A9F6005B36F2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE2F1908A9F6005B36F2 /* Foundation.framework */; };
 		CAA5AE511908A9F6005B36F2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE331908A9F6005B36F2 /* UIKit.framework */; };
@@ -29,7 +34,14 @@
 		CAA5AE6D1908AFC8005B36F2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE691908AFC8005B36F2 /* QuartzCore.framework */; };
 		CAA5AE6F1908AFED005B36F2 /* Mapbox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CAA5AE6E1908AFED005B36F2 /* Mapbox.bundle */; };
 		CAA5AE75190A9CBF005B36F2 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA5AE74190A9CBF005B36F2 /* MapViewController.m */; };
+		CAD0C7BE193FC14200742AD9 /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD0C7BD193FC14200742AD9 /* Appsee.framework */; };
+		CAD0C7C0193FC16400742AD9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD0C7BF193FC16400742AD9 /* AVFoundation.framework */; };
+		CAD0C7C2193FC17A00742AD9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD0C7C1193FC17A00742AD9 /* CoreMedia.framework */; };
+		CAD0C7C4193FC18100742AD9 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD0C7C3193FC18100742AD9 /* CoreVideo.framework */; };
+		CAD0C7C6193FC18D00742AD9 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD0C7C5193FC18D00742AD9 /* SystemConfiguration.framework */; };
+		CAD0C7C8193FD07F00742AD9 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD0C7C7193FD07F00742AD9 /* FacebookSDK.framework */; };
 		CAEEAE631925AD5F005AA927 /* Phone Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = CAEEAE621925AD5F005AA927 /* Phone Icon.png */; };
+		CAF5263E19463DC30022B720 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CAF5263D19463DC30022B720 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +55,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA28305A1946C4CA008E936E /* Pinterest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pinterest.framework; sourceTree = "<group>"; };
+		CA28305C1946C4CA008E936E /* PinterestSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PinterestSDKResources.bundle; sourceTree = "<group>"; };
 		CA2944B6191D086A0075D831 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		CA426254194153E100044DF2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CA61EE0D193FD35C00190E7A /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
+		CAA02FDC1940DDDF005CDC69 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		CAA02FDE1940DDEF005CDC69 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		CAA02FE01940DDF5005CDC69 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		CAA5AE2C1908A9F6005B36F2 /* Peeko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peeko.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA5AE2F1908A9F6005B36F2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CAA5AE311908A9F6005B36F2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -54,10 +73,8 @@
 		CAA5AE3D1908A9F6005B36F2 /* Peeko-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Peeko-Prefix.pch"; sourceTree = "<group>"; };
 		CAA5AE3E1908A9F6005B36F2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		CAA5AE3F1908A9F6005B36F2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		CAA5AE421908A9F6005B36F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CAA5AE441908A9F6005B36F2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		CAA5AE451908A9F6005B36F2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		CAA5AE471908A9F6005B36F2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CAA5AE4D1908A9F6005B36F2 /* PeekoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeekoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA5AE4E1908A9F6005B36F2 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		CAA5AE561908A9F6005B36F2 /* PeekoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PeekoTests-Info.plist"; sourceTree = "<group>"; };
@@ -71,7 +88,14 @@
 		CAA5AE6E1908AFED005B36F2 /* Mapbox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Mapbox.bundle; sourceTree = "<group>"; };
 		CAA5AE73190A9CBF005B36F2 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		CAA5AE74190A9CBF005B36F2 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		CAD0C7BD193FC14200742AD9 /* Appsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Appsee.framework; sourceTree = "<group>"; };
+		CAD0C7BF193FC16400742AD9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		CAD0C7C1193FC17A00742AD9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		CAD0C7C3193FC18100742AD9 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		CAD0C7C5193FC18D00742AD9 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		CAD0C7C7193FD07F00742AD9 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		CAEEAE621925AD5F005AA927 /* Phone Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Phone Icon.png"; sourceTree = "<group>"; };
+		CAF5263D19463DC30022B720 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,12 +103,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAA02FE11940DDF5005CDC69 /* ImageIO.framework in Frameworks */,
+				CAA02FDF1940DDEF005CDC69 /* AssetsLibrary.framework in Frameworks */,
+				CA28305D1946C4CA008E936E /* Pinterest.framework in Frameworks */,
+				CAA5AE6D1908AFC8005B36F2 /* QuartzCore.framework in Frameworks */,
+				CAA02FDD1940DDDF005CDC69 /* MessageUI.framework in Frameworks */,
+				CAD0C7C6193FC18D00742AD9 /* SystemConfiguration.framework in Frameworks */,
+				CAD0C7C4193FC18100742AD9 /* CoreVideo.framework in Frameworks */,
+				CAD0C7C2193FC17A00742AD9 /* CoreMedia.framework in Frameworks */,
+				CAD0C7C0193FC16400742AD9 /* AVFoundation.framework in Frameworks */,
+				CAD0C7BE193FC14200742AD9 /* Appsee.framework in Frameworks */,
 				CA2944B7191D086A0075D831 /* MapKit.framework in Frameworks */,
 				CAA5AE6A1908AFC8005B36F2 /* CoreLocation.framework in Frameworks */,
 				CAA5AE6B1908AFC8005B36F2 /* libsqlite3.dylib in Frameworks */,
 				CAA5AE6C1908AFC8005B36F2 /* libz.dylib in Frameworks */,
-				CAA5AE6D1908AFC8005B36F2 /* QuartzCore.framework in Frameworks */,
 				CAA5AE321908A9F6005B36F2 /* CoreGraphics.framework in Frameworks */,
+				CAD0C7C8193FD07F00742AD9 /* FacebookSDK.framework in Frameworks */,
 				CAA5AE341908A9F6005B36F2 /* UIKit.framework in Frameworks */,
 				CAA5AE301908A9F6005B36F2 /* Foundation.framework in Frameworks */,
 				CAA5AE651908AEB4005B36F2 /* Mapbox.framework in Frameworks */,
@@ -104,9 +138,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA2830591946C4CA008E936E /* Pinterest.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				CA28305A1946C4CA008E936E /* Pinterest.framework */,
+				CA28305B1946C4CA008E936E /* Resources */,
+			);
+			name = Pinterest.embeddedframework;
+			path = Peeko/Pinterest.embeddedframework;
+			sourceTree = "<group>";
+		};
+		CA28305B1946C4CA008E936E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CA28305C1946C4CA008E936E /* PinterestSDKResources.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		CAA5AE231908A9F6005B36F2 = {
 			isa = PBXGroup;
 			children = (
+				CA2830591946C4CA008E936E /* Pinterest.embeddedframework */,
 				CAA5AE6E1908AFED005B36F2 /* Mapbox.bundle */,
 				CAA5AE351908A9F6005B36F2 /* Peeko */,
 				CAA5AE541908A9F6005B36F2 /* PeekoTests */,
@@ -127,6 +180,15 @@
 		CAA5AE2E1908A9F6005B36F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CAA02FE01940DDF5005CDC69 /* ImageIO.framework */,
+				CAA02FDE1940DDEF005CDC69 /* AssetsLibrary.framework */,
+				CAA02FDC1940DDDF005CDC69 /* MessageUI.framework */,
+				CAD0C7C7193FD07F00742AD9 /* FacebookSDK.framework */,
+				CAD0C7C5193FC18D00742AD9 /* SystemConfiguration.framework */,
+				CAD0C7C3193FC18100742AD9 /* CoreVideo.framework */,
+				CAD0C7C1193FC17A00742AD9 /* CoreMedia.framework */,
+				CAD0C7BF193FC16400742AD9 /* AVFoundation.framework */,
+				CAD0C7BD193FC14200742AD9 /* Appsee.framework */,
 				CA2944B6191D086A0075D831 /* MapKit.framework */,
 				CAA5AE661908AFC8005B36F2 /* CoreLocation.framework */,
 				CAA5AE671908AFC8005B36F2 /* libsqlite3.dylib */,
@@ -145,12 +207,12 @@
 			children = (
 				CAA5AE3E1908A9F6005B36F2 /* AppDelegate.h */,
 				CAA5AE3F1908A9F6005B36F2 /* AppDelegate.m */,
-				CAA5AE411908A9F6005B36F2 /* Main.storyboard */,
 				CAA5AE441908A9F6005B36F2 /* ViewController.h */,
+				CA426254194153E100044DF2 /* Main.storyboard */,
 				CAA5AE451908A9F6005B36F2 /* ViewController.m */,
 				CAA5AE73190A9CBF005B36F2 /* MapViewController.h */,
 				CAA5AE74190A9CBF005B36F2 /* MapViewController.m */,
-				CAA5AE471908A9F6005B36F2 /* Images.xcassets */,
+				CAF5263D19463DC30022B720 /* Images.xcassets */,
 				CAA5AE361908A9F6005B36F2 /* Supporting Files */,
 			);
 			path = Peeko;
@@ -159,6 +221,7 @@
 		CAA5AE361908A9F6005B36F2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CA61EE0D193FD35C00190E7A /* splash.png */,
 				CAEEAE621925AD5F005AA927 /* Phone Icon.png */,
 				CAA5AE641908AEB4005B36F2 /* Mapbox.framework */,
 				CAA5AE371908A9F6005B36F2 /* Peeko-Info.plist */,
@@ -267,10 +330,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAA5AE6F1908AFED005B36F2 /* Mapbox.bundle in Resources */,
-				CAA5AE481908A9F6005B36F2 /* Images.xcassets in Resources */,
 				CAA5AE3A1908A9F6005B36F2 /* InfoPlist.strings in Resources */,
+				CA28305E1946C4CA008E936E /* PinterestSDKResources.bundle in Resources */,
+				CA426255194153E100044DF2 /* Main.storyboard in Resources */,
+				CAF5263E19463DC30022B720 /* Images.xcassets in Resources */,
 				CAEEAE631925AD5F005AA927 /* Phone Icon.png in Resources */,
-				CAA5AE431908A9F6005B36F2 /* Main.storyboard in Resources */,
+				CA61EE0E193FD35C00190E7A /* splash.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,14 +388,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		CAA5AE411908A9F6005B36F2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CAA5AE421908A9F6005B36F2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CAA5AE571908A9F6005B36F2 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -370,6 +427,7 @@
 					"$(inherited)",
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -406,6 +464,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = "";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -425,6 +484,7 @@
 		CAA5AE5F1908A9F6005B36F2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -433,17 +493,22 @@
 					"$(PROJECT_DIR)/Peeko",
 					"$(PROJECT_DIR)/Pinterest.embeddedframework",
 					"$(PROJECT_DIR)/Socialize.embeddedframework",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Peeko/PinItSDKiOS/Pinterest.embeddedframework",
+					"$(PROJECT_DIR)/Peeko/Pinterest.embeddedframework",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Peeko/Peeko-Prefix.pch";
 				INFOPLIST_FILE = "Peeko/Peeko-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "./*/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -451,6 +516,7 @@
 		CAA5AE601908A9F6005B36F2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -459,17 +525,22 @@
 					"$(PROJECT_DIR)/Peeko",
 					"$(PROJECT_DIR)/Pinterest.embeddedframework",
 					"$(PROJECT_DIR)/Socialize.embeddedframework",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Peeko/PinItSDKiOS/Pinterest.embeddedframework",
+					"$(PROJECT_DIR)/Peeko/Pinterest.embeddedframework",
 				);
 				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Peeko/Peeko-Prefix.pch";
 				INFOPLIST_FILE = "Peeko/Peeko-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "./*/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

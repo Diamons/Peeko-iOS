@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Appsee/Appsee.h>
+#import <FacebookSDK/FacebookSDK.h>
+
 //#import <Socialize/Socialize.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
