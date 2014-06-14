@@ -11,10 +11,13 @@
 #import <Mapbox/Mapbox.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import <Pinterest/Pinterest.h>
+#import <MessageUI/MessageUI.h>
+#import "GAITrackedViewController.h"
 
-@interface MapViewController : UIViewController <RMMapViewDelegate> //, MWPhotoBrowserDelegate>
+@interface MapViewController : GAITrackedViewController <RMMapViewDelegate> //, MWPhotoBrowserDelegate>
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *NavButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *CloseButton;
+@property (strong, nonatomic) IBOutlet UINavigationBar *NavigationTitle;
 
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
@@ -37,6 +40,7 @@
 - (IBAction)PinterestButtonPressed:(id)sender;
 
 -(void)toggleNavigationButtons;
+-(void)sendEmail:(NSString*)email withSubject:(NSString*)subject withBody:(NSString*)body;
 -(UIColor *)colorFromHexString:(NSString *)hexString;
 
 extern float MyLastLatitude;

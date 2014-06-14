@@ -78,7 +78,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4fU-0G-vRP">
-                                <rect key="frame" x="0.0" y="62" width="320" height="408"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wAk-ka-98Q">
@@ -91,7 +91,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gKF-4E-L2m">
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gKF-4E-L2m">
                                 <rect key="frame" x="0.0" y="18" width="320" height="44"/>
                                 <color key="backgroundColor" red="0.10588235294117647" green="0.81960784313725488" blue="1" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="barTintColor" red="0.1058823529" green="0.81960784310000001" blue="1" alpha="1" colorSpace="deviceRGB"/>
@@ -125,6 +125,7 @@
                         <outlet property="MapContainer" destination="4fU-0G-vRP" id="7WK-hA-w2J"/>
                         <outlet property="MapHelperView" destination="4fU-0G-vRP" id="4jS-CQ-YAY"/>
                         <outlet property="NavButton" destination="emL-ZH-oVY" id="3en-rh-jfK"/>
+                        <outlet property="NavigationTitle" destination="gKF-4E-L2m" id="KlY-VO-H2B"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lHc-g5-fz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -135,7 +136,7 @@
     <resources>
         <image name="close" width="20" height="20"/>
         <image name="login" width="180" height="40"/>
-        <image name="peekobg" width="640" height="1136"/>
+        <image name="peekobg" width="320" height="480"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

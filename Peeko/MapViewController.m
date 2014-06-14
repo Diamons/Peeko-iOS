@@ -8,8 +8,9 @@
 
 #import "MapViewController.h"
 #import "QuartzCore/CALayer.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
-@interface MapViewController () <CLLocationManagerDelegate>
+@interface MapViewController () <CLLocationManagerDelegate, UIScrollViewDelegate, UIActionSheetDelegate, MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -23,17 +24,22 @@ float MyLastLongitude = 0;
 bool minimizedDetail = false;
 bool webviewActive = false;
 
+float detailHeight = 0;
+
 NSString *baseURL = @"http://peekoapp.com/";
 //NSString *baseURL = @"http://peeko.dev/";
 //NSString *baseURL = @"http://peeko.dev.192.168.1.16.xip.io/";
 
 NSMutableArray *photos;
-UIView *detailView;
+UIScrollView *detailView;
 bool alertedBefore = false;
 
 UIButton *bannerButton;
 NSNumber *currentPromotionIndex;
 UIWebView *webView;
+
+bool FlagForFirstTimeOpen;
+bool CloseButtonIsInfo;
 
 Pinterest*  _pinterest;
 
@@ -48,12 +54,15 @@ Pinterest*  _pinterest;
 
 - (void)viewDidLoad{
     [super viewDidLoad];
+    self.screenName = @"Map view!";
+    
     _ArrayOfImages = [[NSMutableDictionary alloc] init];
     _ArrayOfPromotions = [[NSMutableDictionary alloc] init];
     _ArrayOfStores = [[NSMutableDictionary alloc] init];
     bannerButton = [[UIButton alloc] init];
     _pinterest = [[Pinterest alloc] initWithClientId:@"1438379" urlSchemeSuffix:@"peeko"];
     [self toggleNavigationButtons];
+    
     // Do any additional setup after loading the view.
     
     RMMapboxSource *interactiveSource = [[RMMapboxSource alloc] initWithMapID:@"diamons.ifd6agf1"];
@@ -127,6 +136,17 @@ Pinterest*  _pinterest;
         //Show markers
         [self GetStoreMarkers:currentLocation.coordinate.latitude withLongitude:currentLocation.coordinate.longitude];
     }
+    //ONE TIME ALERT #2
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    if (! [defaults boolForKey:@"secondTutorial"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"How to Shop"
+                                                        message:@"This app is for NYC (beta). If you don't see any stores, try zooming out. To start shopping tap on a store icon to bring up that store's deal. Tap the banner to learn more about the deal."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+        [defaults setBool:YES forKey:@"secondTutorial"];
+    }
 }
 
 -(void)GetStoreMarkers:(float)latitude withLongitude:(float)longitude{
@@ -138,12 +158,22 @@ Pinterest*  _pinterest;
     NSData *data = [NSData dataWithContentsOfURL:url];
     NSError *error = nil;
 
-    id response = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-    if(!response){
-        //NSLog(@"ERROR");
-    }else{
-        //NSLog(@"GOOD!");
-        [self GenerateMarkersForStoresOnMap:response];
+    @try{
+        id response = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        if(!response){
+            NSLog(@"ERROR");
+        }else{
+            //NSLog(@"GOOD!");
+            [self GenerateMarkersForStoresOnMap:response];
+        }
+    }
+    @catch(...){
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
+                                                        message:@"You must be connected to the internet to use this app."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
     }
     
 }
@@ -184,14 +214,38 @@ Pinterest*  _pinterest;
     NSNumber *index = [NSNumber numberWithInt:[annotation.userInfo intValue]];
     
     //Set up remote image ICON for the map
+    NSURL *baseURLTemp = [NSURL URLWithString:baseURL];
     NSString *iconURL = [_ArrayOfImages objectForKey:index];
-    NSData *imageData = [self imageFromUrl:iconURL];
-    RMMarker *marker;
-    marker = [[RMMarker alloc] initWithUIImage:[UIImage imageWithData:imageData scale: 2] anchorPoint:CGPointMake(0.5, 1)];
-    marker.canShowCallout = true;
+    iconURL = [iconURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    iconURL = [iconURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *imageURL = [NSURL URLWithString:iconURL relativeToURL:baseURLTemp];
     
+    
+    
+    __block RMMarker *marker;
+    
+    SDWebImageManager *manager = [SDWebImageManager sharedManager];
+    [manager downloadWithURL:imageURL
+                     options:0
+                    progress:^(NSInteger receivedSize, NSInteger expectedSize)
+     {
+         // progression tracking code
+     }
+                   completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, BOOL finished)
+     {
+         if (image)
+         {
+             image = [UIImage imageWithCGImage:[image CGImage]
+                                         scale: 2.25
+                                        orientation:UIImageOrientationUp];
+             marker = [[RMMarker alloc] initWithUIImage:image];
+             marker.canShowCallout = true;
+             
+         }
+     }];
     
     return marker;
+    
 }
 
 -(BOOL)checkWithLastLocation:(float)latitude withLongitude:(float)longitude{
@@ -259,8 +313,10 @@ Pinterest*  _pinterest;
         [self.view addSubview:imageView];
          */
         
-        detailView = [[UIView alloc] init];
-        detailView.frame = CGRectMake(0, 470, 320, 100);
+        detailView = [[UIScrollView alloc] init];
+        detailView.alwaysBounceVertical = YES;
+        detailView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+        detailView.frame = CGRectMake(0, self.view.frame.size.height-100, 320, 100);
         detailView.layer.shadowColor = [UIColor grayColor].CGColor;
         //detailView.backgroundColor = [[self colorFromHexString:@"#FFFFFF"] colorWithAlphaComponent:.4];
         detailView.backgroundColor = [UIColor colorWithWhite: 1.0 alpha: 1];
@@ -279,9 +335,15 @@ Pinterest*  _pinterest;
         bannerButton.layer.shadowOffset = CGSizeMake(0, 1);
         bannerButton.layer.shadowOpacity = 1;
         
-        UISwipeGestureRecognizer *gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(BannerSwipedUp:)];
-        [gestureRecognizer setDirection: (UISwipeGestureRecognizerDirectionUp)];
-        [bannerButton addGestureRecognizer:gestureRecognizer];
+        //UISwipeGestureRecognizer *gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(BannerSwipedUp:)];
+        //[gestureRecognizer setDirection: (UISwipeGestureRecognizerDirectionUp)];
+        
+        UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc]
+                                                     initWithTarget:self action:@selector(handlePanGesture:)];
+        [detailView addGestureRecognizer:panRecognizer];
+        
+        
+        //[bannerButton addGestureRecognizer:gestureRecognizer];
         
         [bannerButton setBackgroundImage:banner forState:UIControlStateNormal];
         [bannerButton addTarget:self action:@selector(BannerPressed:) forControlEvents:UIControlEventTouchUpInside];
@@ -291,69 +353,185 @@ Pinterest*  _pinterest;
     }
 }
 
+- (void)handlePanGesture:(UIPanGestureRecognizer *)gestureRecognizer
+{
+    //NSLog(@"GESTURE!");
+    CGPoint velocity = [gestureRecognizer velocityInView:detailView];
+    
+    //Check if the detail is open. If it isn't, don't scroll.
+    //NSLog(@" %s", minimizedDetail ? "true" : "false");
+    if(minimizedDetail){
+        //Are we going down? If so minimize detail
+        
+        //NSLog(@"%f", velocity.y);
+        if(velocity.y < 2000){
+            CGPoint translation = [gestureRecognizer translationInView:detailView];
+            CGRect bounds = [detailView bounds];
+            [detailView setContentSize:CGSizeMake(self.view.frame.size.width,detailHeight)];
+            // Translate the view's bounds, but do not permit values that would violate contentSize
+            CGFloat newBoundsOriginX = bounds.origin.x - translation.x;
+            CGFloat minBoundsOriginX = 0.0;
+            CGFloat maxBoundsOriginX = detailView.contentSize.width - bounds.size.width;
+            bounds.origin.x = fmax(minBoundsOriginX, fmin(newBoundsOriginX, maxBoundsOriginX));
+            
+            CGFloat newBoundsOriginY = bounds.origin.y - translation.y;
+            CGFloat minBoundsOriginY = 0.0;
+            CGFloat maxBoundsOriginY = detailView.contentSize.height - bounds.size.height;
+            bounds.origin.y = fmax(minBoundsOriginY, fmin(newBoundsOriginY, maxBoundsOriginY));
+            
+            detailView.bounds = bounds;
+            [gestureRecognizer setTranslation:CGPointZero inView:detailView];
+            
+            //If this is the opening gesture, go to the top. This is to fix a user interface bug.
+            if(!FlagForFirstTimeOpen){
+                if(gestureRecognizer.state == UIGestureRecognizerStateEnded)
+                {
+                    //NSLog(@"BAM!");
+                    
+                    CGRect bounds = [detailView bounds];
+                    bounds.origin.x = 0;
+                    bounds.origin.y = 0;
+                    detailView.bounds = bounds;
+                  
+                    FlagForFirstTimeOpen = true;
+                }
+            }
+        }else{
+            [self minimizeDetail];
+            if(gestureRecognizer.state == UIGestureRecognizerStateEnded)
+            {
+                CGRect bounds = [detailView bounds];
+                bounds.origin.x = 0;
+                bounds.origin.y = 0;
+                detailView.bounds = bounds;
+            }
+        }
+    }else{
+        if(velocity.y < -1500){
+            NSLog(@"Scrolly view");
+            [self BannerPressed:nil];
+        }
+        /*
+        if(gestureRecognizer.state == UIGestureRecognizerStateEnded)
+        {
+            CGRect bounds = [detailView bounds];
+            bounds.origin.x = 0;
+            bounds.origin.y = 0;
+            detailView.bounds = bounds;
+        }
+         */
+        
+    }
+}
+
 -(void)BannerSwipedUp:(UISwipeGestureRecognizer *)recognizer{
     [self BannerPressed:nil];
 }
 
 -(void)BannerPressed:(id)sender{
+    //We're in full view baby!
     if(!minimizedDetail){
-        [UIView animateWithDuration: 0.5 animations: ^{
-            detailView.frame = CGRectMake(0, 62, 320, 568);
-            //[bannerButton removeFromSuperview];
+        NSDictionary *store = [_ArrayOfStores objectForKey:currentPromotionIndex];
+        [FBAppEvents logEvent:[NSString stringWithFormat:@"%@ Viewed Full", currentPromotionIndex]];
+        detailView.scrollEnabled = YES;
+        [UIScrollView animateWithDuration: 0.5 animations: ^{
+            self.NavigationTitle.topItem.title = [store objectForKey:@"name"];
+            detailView.frame = CGRectMake(0, 62, 320, self.view.frame.size.height-62);
             [self GenerateFullPromoView];
 
         }];
         minimizedDetail = !minimizedDetail;
     }else{
+        NSLog(@"NO scroll!");
+        detailView.scrollEnabled = NO;
         [self minimizeDetail];
     }
     
-        //[self.view addSubview:detailView];
-    /*
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    MapDetailViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:@"MapDetailViewController"];
-    [self presentViewController:viewController animated:YES completion: NULL];
-     */
+
 }
 
 -(void)GenerateFullPromoView{
+    
+    //ONE TIME ALERT #3
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    if (! [defaults boolForKey:@"thirdTutorial"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Redeeming your Offer"
+                                                        message:@"To redeem this offer simply walk in and present the offer to the cashier. No vouchers to print or buy ahead of time - it's that easy! Tap the banner again or swipe downward to return to the Peeko shopping map!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+        [defaults setBool:YES forKey:@"thirdTutorial"];
+    }
+    
+    int descHeight = 0;
+    detailHeight = 100; //Reset height tracker to height of banner
+    detailHeight += 50; //Offset
+    
+    //Reset the position of the view
+    CGRect bounds = [detailView bounds];
+    bounds.origin.x = 0;
+    bounds.origin.y = 0;
+    detailView.bounds = bounds;
+    
     UISwipeGestureRecognizer *gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(DetailSwiped:)];
     [gestureRecognizer setDirection: (UISwipeGestureRecognizerDirectionDown)];
     [detailView addGestureRecognizer:gestureRecognizer];
     
-    UILabel *addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 115, 300, 20)];
+    UILabel *addressLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 111, 300, 20)];
     NSDictionary *store = [_ArrayOfStores objectForKey:currentPromotionIndex];
     addressLabel.text = [[NSMutableString alloc] initWithString:[store objectForKey:@"address"]];
     [detailView addSubview:addressLabel];
     
+    NSDictionary *promotions = [_ArrayOfPromotions objectForKey:currentPromotionIndex];
+    for(NSDictionary *promo in promotions){
+        UILabel *descriptionLabel = [[UILabel alloc] initWithFrame: CGRectMake(10, 130, 300, 999)];
+        NSMutableString *desc = [[NSMutableString alloc] initWithString:[promo objectForKey:@"description"]];
+        descriptionLabel.text = desc;
+        descriptionLabel.numberOfLines = 0;
+        [descriptionLabel sizeToFit];
+        [detailView addSubview:descriptionLabel];
+        descHeight = (int)descriptionLabel.frame.size.height;
+    }
+    
+    detailHeight += addressLabel.frame.size.height;
+    detailHeight += descHeight;
+    
+    
     UIImage *callBackground = [UIImage imageNamed:@"button-call"];
     UIButton *callButton = [[UIButton alloc] init];
     [callButton setImage:callBackground forState:UIControlStateNormal];
-    [callButton setFrame: CGRectMake(10, 140, 140, 170)];
+    [callButton setFrame: CGRectMake(10, 140 + descHeight, 140, 170)];
     [callButton addTarget: self action:@selector(CallButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [detailView addSubview:callButton];
+    detailHeight += callBackground.size.height; //Only one button
     
     UIImage *menuBackground = [UIImage imageNamed:@"button-menu"];
     UIButton *menuButton = [[UIButton alloc] init];
     [menuButton setImage:menuBackground forState:UIControlStateNormal];
-    [menuButton setFrame: CGRectMake(170, 140, 140, 170)];
+    [menuButton setFrame: CGRectMake(170, 140 + descHeight, 140, 170)];
     [menuButton addTarget: self action:@selector(MenuButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [detailView addSubview:menuButton];
     
     UIImage *fbBackground = [UIImage imageNamed:@"button-facebook"];
     UIButton *fbButton = [[UIButton alloc] init];
     [fbButton setImage:fbBackground forState:UIControlStateNormal];
-    [fbButton setFrame: CGRectMake(10, 320, 300, 80)];
+    [fbButton setFrame: CGRectMake(10, 320 + descHeight, 300, 80)];
     [fbButton addTarget: self action:@selector(FacebookButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [detailView addSubview:fbButton];
+    detailHeight += fbBackground.size.height;
     
     UIImage *pinterestBackground = [UIImage imageNamed:@"button-pinterest"];
     UIButton *pinterestButton = [[UIButton alloc] init];
     [pinterestButton setImage:pinterestBackground forState:UIControlStateNormal];
-    [pinterestButton setFrame: CGRectMake(10, 410, 300, 80)];
+    [pinterestButton setFrame: CGRectMake(10, 410 + descHeight, 300, 80)];
     [pinterestButton addTarget: self action:@selector(PinterestButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [detailView addSubview:pinterestButton];
-
+    detailHeight += pinterestBackground.size.height;
+    
+    //Set the height to accomodate all this stuff
+    [detailView setContentSize:CGSizeMake(self.view.frame.size.width,detailHeight)];
+    
     //NSLog(@"TEST #1: %@", [promotions objectForKey:@"image"]);
     
     //Get menu URL
@@ -382,15 +560,53 @@ Pinterest*  _pinterest;
 }
 
 - (IBAction)CloseButtonPressed:(id)sender {
-    [self toggleNavigationButtons];
+    if(CloseButtonIsInfo){
+        UIActionSheet *popup = [[UIActionSheet alloc] initWithTitle:@"" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:
+                                @"Suggest a Shop",
+                                @"Send Feedback",
+                                @"Email to a Friend",
+                                @"Rate this App",
+                                nil];
+        popup.tag = 1;
+        [popup showInView:[UIApplication sharedApplication].keyWindow];
+    }else{
+        [self toggleNavigationButtons];
+        
+        [webView removeFromSuperview];
+        detailView.hidden = NO;
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)popup clickedButtonAtIndex:(NSInteger)buttonIndex {
     
-    [webView removeFromSuperview];
-    detailView.hidden = NO;
+    switch (popup.tag) {
+        case 1: {
+            switch (buttonIndex) {
+                case 0:
+                    [self sendEmail:@"support@peekoapp.com" withSubject:@"Store Suggestion for Peeko" withBody:@"Store X 123 Fake Street offers free drink and appetizer with their lunch combo!"];
+                    break;
+                case 1:
+                    [self sendEmail:@"support@peekoapp.com" withSubject:@"Feedback for Peeko" withBody:@"Hi Peeko I love your app! I use your app every day and think adding feature X would be great!"];
+                    break;
+                case 2:
+                    [self sendEmail:nil withSubject:@"Peeko App" withBody:@"Wanna try something new for lunch next week with this cool app? http://bit.ly/peeko3"];
+                    break;
+                case 3:
+                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id781198595"]];
+                    break;
+                default:
+                    break;
+            }
+            break;
+        }
+        default:
+            break;
+    }
 }
 
 - (IBAction)FacebookButtonPressed:(id)sender {
-    [FBAppEvents logEvent:@"Call Placed"];
     NSDictionary *store = [_ArrayOfStores objectForKey:currentPromotionIndex];
+    [FBAppEvents logEvent:[NSString stringWithFormat:@"%@ Shared on Facebook", [store objectForKey:@"index"]]];
     NSMutableString *icon = [[NSMutableString alloc] initWithString:[store objectForKey:@"icon"]];
     [icon insertString:baseURL atIndex:0];
    
@@ -443,9 +659,9 @@ Pinterest*  _pinterest;
     NSDictionary *store = [_ArrayOfStores objectForKey:currentPromotionIndex];
     phone = [[NSMutableString alloc] initWithString:[store objectForKey:@"phone"]];
     
-    [FBAppEvents logEvent:phone];
+    [FBAppEvents logEvent:[store objectForKey:@"phone"]];
     
-    //Make 718-444-4444 -> tel:718-444-4444 to open in Phone appv
+    //Make 718-444-4444 -> telprompt:718-444-4444 to open in Phone app
     [phone insertString:@"telprompt:" atIndex:0];
     
     NSLog(@"%@", phone);
@@ -477,10 +693,13 @@ Pinterest*  _pinterest;
 }
 
 -(void)minimizeDetail{
-    [UIView animateWithDuration: 0.5 animations: ^{
-        detailView.frame = CGRectMake(0, 470, 320, 100);
+    FlagForFirstTimeOpen = false; //Reset that the banner has been closed and we want PanGesture to work properly again
+    [UIScrollView animateWithDuration: 0.5 animations: ^{
+        self.NavigationTitle.topItem.title = @"Peeko";
+        detailView.frame = CGRectMake(0, self.view.frame.size.height-100, 320, 100);
+        [detailView setContentSize:CGSizeMake(detailView.contentSize.width,detailView.frame.size.height)];
         //[bannerButton removeFromSuperview];
-        [self GenerateFullPromoView];
+        //[self GenerateFullPromoView];
         
     }];
     
@@ -488,12 +707,13 @@ Pinterest*  _pinterest;
 }
 
 -(void)toggleNavigationButtons{
-    //If webview is up, hide close button and show navigation
+    //If webview was up, hide close button and show navigation
     if(webviewActive){
         NSLog(@"Show close");
         _CloseButton.image = [UIImage imageNamed:@"close"];
         _CloseButton.style = UIBarButtonItemStyleBordered;
-        _CloseButton.enabled = true;
+        //_CloseButton.enabled = true;
+        CloseButtonIsInfo = false;
         
         _NavButton.image = nil;
         _NavButton.style = UIBarButtonItemStylePlain;
@@ -505,17 +725,92 @@ Pinterest*  _pinterest;
         _NavButton.style = UIBarButtonItemStylePlain;
         _NavButton.enabled = true;
         
-        _CloseButton.image = nil;
-        _CloseButton.style = UIBarButtonItemStylePlain;
-        _CloseButton.enabled = false;
+        //Repurpose the close button to ask for feedback
+        _CloseButton.image = [UIImage imageNamed:@"info"];
+        CloseButtonIsInfo = true;
+        //_CloseButton.style = UIBarButtonItemStylePlain;
+        //_CloseButton.enabled = false;
         _CloseButton.title = @"";
     }
     webviewActive = !webviewActive;
 }
 
+//Helper for menu options to suggest store / feedback
+-(void)sendEmail:(NSString*)email withSubject:(NSString*)subject withBody:(NSString*)body{
+    /*
+     NSString *emailLine = [NSString stringWithFormat:@"mailto:%@", email];
+    NSString *subjectLine = [NSString stringWithFormat:@"&subject=%@", subject];
+    NSString *bodyLine = [NSString stringWithFormat:@"&body=%@", body];
+    
+    NSString *emailLink = [NSString stringWithFormat:@"%@%@%@", emailLine, subjectLine, bodyLine];
+    NSLog(@"Email:%@", emailLink);
+    emailLink = [emailLink stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:emailLink]];
+     */
+    
+    if ([MFMailComposeViewController canSendMail])
+    {
+        MFMailComposeViewController *mailer = [[MFMailComposeViewController alloc] init];
+        
+        mailer.mailComposeDelegate = self;
+        
+        [mailer setSubject:subject];
+        
+        //Destination adress
+        NSArray *toRecipients = [NSArray arrayWithObjects:email, nil];
+        [mailer setToRecipients:toRecipients];
+        
+        /* Attachment Code - for reference later
+        //Attachement Object
+        UIImage *myImage = [UIImage imageNamed:@"image.jpeg"];
+        NSData *imageData = UIImagePNGRepresentation(myImage);
+        [mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"mobiletutsImage"];
+        */
+        
+        //Message Body
+        NSString *emailBody = body;
+        [mailer setMessageBody:emailBody isHTML:NO];
+        
+        [self presentViewController:mailer animated:YES completion:nil];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failure"
+                                                        message:@"Your device doesn't support the composer sheet"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+    }
+}
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled: you cancelled the operation and no email message was queued.");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved: you saved the email message in the drafts folder.");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail send: the email message is queued in the outbox. It is ready to send.");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail failed: the email message was not saved or queued, possibly due to an error.");
+            break;
+        default:
+            NSLog(@"Mail not sent.");
+            break;
+    }
+    
+    // Remove the mail view
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 -(NSData*)imageFromUrl:(NSString*)iconURL{
     NSURL *baseURLTemp = [NSURL URLWithString:baseURL];
-    
+
     iconURL = [iconURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     iconURL = [iconURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *imageURL = [NSURL URLWithString:iconURL relativeToURL:baseURLTemp];
@@ -524,6 +819,7 @@ Pinterest*  _pinterest;
     NSData *imageData = [NSData dataWithContentsOfURL:imageURL];
     return imageData;
 }
+
 
 -(UIColor *)colorFromHexString:(NSString *)hexString {
     unsigned rgbValue = 0;

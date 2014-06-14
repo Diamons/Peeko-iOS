@@ -9,8 +9,9 @@
 #import "AppDelegate.h"
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "GAITrackedViewController.h"
 
-@interface ViewController : UIViewController <UITextFieldDelegate>
+@interface ViewController : GAITrackedViewController <UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *EmailLoginField;
 @property (strong, nonatomic) IBOutlet UITextField *PasswordLoginField;

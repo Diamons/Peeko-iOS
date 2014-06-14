@@ -11,7 +11,6 @@
 		CA28305E1946C4CA008E936E /* PinterestSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA28305C1946C4CA008E936E /* PinterestSDKResources.bundle */; };
 		CA2944B7191D086A0075D831 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2944B6191D086A0075D831 /* MapKit.framework */; };
 		CA426255194153E100044DF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA426254194153E100044DF2 /* Main.storyboard */; };
-		CA61EE0E193FD35C00190E7A /* splash.png in Resources */ = {isa = PBXBuildFile; fileRef = CA61EE0D193FD35C00190E7A /* splash.png */; };
 		CAA02FDD1940DDDF005CDC69 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA02FDC1940DDDF005CDC69 /* MessageUI.framework */; };
 		CAA02FDF1940DDEF005CDC69 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA02FDE1940DDEF005CDC69 /* AssetsLibrary.framework */; };
 		CAA02FE11940DDF5005CDC69 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA02FE01940DDF5005CDC69 /* ImageIO.framework */; };
@@ -34,6 +33,10 @@
 		CAA5AE6D1908AFC8005B36F2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA5AE691908AFC8005B36F2 /* QuartzCore.framework */; };
 		CAA5AE6F1908AFED005B36F2 /* Mapbox.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CAA5AE6E1908AFED005B36F2 /* Mapbox.bundle */; };
 		CAA5AE75190A9CBF005B36F2 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAA5AE74190A9CBF005B36F2 /* MapViewController.m */; };
+		CAAECE51194CBF4E00CB305B /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAAECE50194CBF4E00CB305B /* SDWebImage.framework */; };
+		CAAECE59194CC3F500CB305B /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAAECE58194CC3F500CB305B /* libGoogleAnalyticsServices.a */; };
+		CAAECE5C194CC42B00CB305B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAAECE5B194CC42B00CB305B /* AdSupport.framework */; };
+		CAAECE5E194CC43100CB305B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAAECE5D194CC43000CB305B /* CoreData.framework */; };
 		CAD0C7BE193FC14200742AD9 /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD0C7BD193FC14200742AD9 /* Appsee.framework */; };
 		CAD0C7C0193FC16400742AD9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD0C7BF193FC16400742AD9 /* AVFoundation.framework */; };
 		CAD0C7C2193FC17A00742AD9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD0C7C1193FC17A00742AD9 /* CoreMedia.framework */; };
@@ -59,7 +62,6 @@
 		CA28305C1946C4CA008E936E /* PinterestSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PinterestSDKResources.bundle; sourceTree = "<group>"; };
 		CA2944B6191D086A0075D831 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		CA426254194153E100044DF2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		CA61EE0D193FD35C00190E7A /* splash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splash.png; sourceTree = "<group>"; };
 		CAA02FDC1940DDDF005CDC69 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		CAA02FDE1940DDEF005CDC69 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		CAA02FE01940DDF5005CDC69 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
@@ -80,7 +82,7 @@
 		CAA5AE561908A9F6005B36F2 /* PeekoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PeekoTests-Info.plist"; sourceTree = "<group>"; };
 		CAA5AE581908A9F6005B36F2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CAA5AE5A1908A9F6005B36F2 /* PeekoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PeekoTests.m; sourceTree = "<group>"; };
-		CAA5AE641908AEB4005B36F2 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Mapbox.framework; sourceTree = "<group>"; };
+		CAA5AE641908AEB4005B36F2 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = Peeko/Mapbox.framework; sourceTree = "<group>"; };
 		CAA5AE661908AFC8005B36F2 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		CAA5AE671908AFC8005B36F2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		CAA5AE681908AFC8005B36F2 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
@@ -88,6 +90,16 @@
 		CAA5AE6E1908AFED005B36F2 /* Mapbox.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Mapbox.bundle; sourceTree = "<group>"; };
 		CAA5AE73190A9CBF005B36F2 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		CAA5AE74190A9CBF005B36F2 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		CAAECE50194CBF4E00CB305B /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		CAAECE52194CC3F500CB305B /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		CAAECE53194CC3F500CB305B /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		CAAECE54194CC3F500CB305B /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		CAAECE55194CC3F500CB305B /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		CAAECE56194CC3F500CB305B /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		CAAECE57194CC3F500CB305B /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		CAAECE58194CC3F500CB305B /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		CAAECE5B194CC42B00CB305B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		CAAECE5D194CC43000CB305B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CAD0C7BD193FC14200742AD9 /* Appsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Appsee.framework; sourceTree = "<group>"; };
 		CAD0C7BF193FC16400742AD9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CAD0C7C1193FC17A00742AD9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -103,12 +115,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAA5AE6C1908AFC8005B36F2 /* libz.dylib in Frameworks */,
+				CAD0C7C6193FC18D00742AD9 /* SystemConfiguration.framework in Frameworks */,
+				CAAECE5E194CC43100CB305B /* CoreData.framework in Frameworks */,
+				CAAECE5C194CC42B00CB305B /* AdSupport.framework in Frameworks */,
+				CAAECE51194CBF4E00CB305B /* SDWebImage.framework in Frameworks */,
 				CAA02FE11940DDF5005CDC69 /* ImageIO.framework in Frameworks */,
 				CAA02FDF1940DDEF005CDC69 /* AssetsLibrary.framework in Frameworks */,
 				CA28305D1946C4CA008E936E /* Pinterest.framework in Frameworks */,
 				CAA5AE6D1908AFC8005B36F2 /* QuartzCore.framework in Frameworks */,
 				CAA02FDD1940DDDF005CDC69 /* MessageUI.framework in Frameworks */,
-				CAD0C7C6193FC18D00742AD9 /* SystemConfiguration.framework in Frameworks */,
 				CAD0C7C4193FC18100742AD9 /* CoreVideo.framework in Frameworks */,
 				CAD0C7C2193FC17A00742AD9 /* CoreMedia.framework in Frameworks */,
 				CAD0C7C0193FC16400742AD9 /* AVFoundation.framework in Frameworks */,
@@ -116,9 +132,9 @@
 				CA2944B7191D086A0075D831 /* MapKit.framework in Frameworks */,
 				CAA5AE6A1908AFC8005B36F2 /* CoreLocation.framework in Frameworks */,
 				CAA5AE6B1908AFC8005B36F2 /* libsqlite3.dylib in Frameworks */,
-				CAA5AE6C1908AFC8005B36F2 /* libz.dylib in Frameworks */,
 				CAA5AE321908A9F6005B36F2 /* CoreGraphics.framework in Frameworks */,
 				CAD0C7C8193FD07F00742AD9 /* FacebookSDK.framework in Frameworks */,
+				CAAECE59194CC3F500CB305B /* libGoogleAnalyticsServices.a in Frameworks */,
 				CAA5AE341908A9F6005B36F2 /* UIKit.framework in Frameworks */,
 				CAA5AE301908A9F6005B36F2 /* Foundation.framework in Frameworks */,
 				CAA5AE651908AEB4005B36F2 /* Mapbox.framework in Frameworks */,
@@ -156,6 +172,13 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		CA5BC711194778EA00732C62 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
 		CAA5AE231908A9F6005B36F2 = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +203,10 @@
 		CAA5AE2E1908A9F6005B36F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CAAECE5D194CC43000CB305B /* CoreData.framework */,
+				CAAECE5B194CC42B00CB305B /* AdSupport.framework */,
+				CAA5AE641908AEB4005B36F2 /* Mapbox.framework */,
+				CAAECE50194CBF4E00CB305B /* SDWebImage.framework */,
 				CAA02FE01940DDF5005CDC69 /* ImageIO.framework */,
 				CAA02FDE1940DDEF005CDC69 /* AssetsLibrary.framework */,
 				CAA02FDC1940DDDF005CDC69 /* MessageUI.framework */,
@@ -205,6 +232,7 @@
 		CAA5AE351908A9F6005B36F2 /* Peeko */ = {
 			isa = PBXGroup;
 			children = (
+				CA5BC711194778EA00732C62 /* iPad */,
 				CAA5AE3E1908A9F6005B36F2 /* AppDelegate.h */,
 				CAA5AE3F1908A9F6005B36F2 /* AppDelegate.m */,
 				CAA5AE441908A9F6005B36F2 /* ViewController.h */,
@@ -221,9 +249,8 @@
 		CAA5AE361908A9F6005B36F2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				CA61EE0D193FD35C00190E7A /* splash.png */,
+				CAAECE5A194CC3FB00CB305B /* Google Analytics */,
 				CAEEAE621925AD5F005AA927 /* Phone Icon.png */,
-				CAA5AE641908AEB4005B36F2 /* Mapbox.framework */,
 				CAA5AE371908A9F6005B36F2 /* Peeko-Info.plist */,
 				CAA5AE381908A9F6005B36F2 /* InfoPlist.strings */,
 				CAA5AE3B1908A9F6005B36F2 /* main.m */,
@@ -248,6 +275,20 @@
 				CAA5AE571908A9F6005B36F2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CAAECE5A194CC3FB00CB305B /* Google Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				CAAECE52194CC3F500CB305B /* GAI.h */,
+				CAAECE53194CC3F500CB305B /* GAIDictionaryBuilder.h */,
+				CAAECE54194CC3F500CB305B /* GAIFields.h */,
+				CAAECE55194CC3F500CB305B /* GAILogger.h */,
+				CAAECE56194CC3F500CB305B /* GAITrackedViewController.h */,
+				CAAECE57194CC3F500CB305B /* GAITracker.h */,
+				CAAECE58194CC3F500CB305B /* libGoogleAnalyticsServices.a */,
+			);
+			name = "Google Analytics";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,7 +376,6 @@
 				CA426255194153E100044DF2 /* Main.storyboard in Resources */,
 				CAF5263E19463DC30022B720 /* Images.xcassets in Resources */,
 				CAEEAE631925AD5F005AA927 /* Phone Icon.png in Resources */,
-				CA61EE0E193FD35C00190E7A /* splash.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,6 +528,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Peeko",
@@ -501,13 +542,18 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Peeko/Peeko-Prefix.pch";
 				INFOPLIST_FILE = "Peeko/Peeko-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Peeko",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				PROVISIONING_PROFILE = "63DF69F1-16BF-4A14-BA92-629C71D1B1FE";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "./*/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -520,6 +566,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Peeko",
@@ -533,13 +580,18 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Peeko/Peeko-Prefix.pch";
 				INFOPLIST_FILE = "Peeko/Peeko-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Peeko",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				PROVISIONING_PROFILE = "0ACC3B54-7B8D-4772-92E5-80AFE3322013";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "./*/**";
 				WRAPPER_EXTENSION = app;
 			};

@@ -7,17 +7,38 @@
 //
 
 #import "AppDelegate.h"
+#import "GAI.h"
+#include <stdlib.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Optional: automatically send uncaught exceptions to Google Analytics.
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    
+    // Initialize tracker. Replace with your tracking ID.
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-2509553-12"];
+    
+    
     //[[UIView appearance] setTintColor: [UIColor blueColor]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [Appsee start:@"9421569ad8dc4ec2ad6b0f289f08160f"];
+    [Appsee start:@"f9cc3c2003d14348ada56c4116131f7b"];
     
     [FBAppEvents activateApp];
-
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    localNotif.fireDate = [NSDate dateWithTimeInterval:60*60*24*3 sinceDate:[NSDate date]];
+    localNotif.timeZone = [NSTimeZone defaultTimeZone];
+    localNotif.alertBody = @"Hungry for some lunch? Find great nearby deals with Peeko!";
+    localNotif.soundName = UILocalNotificationDefaultSoundName;
+    localNotif.applicationIconBadgeNumber = 0;
+    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
     // Override point for customization after application launch.
     return YES;
 }
@@ -30,13 +51,6 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-    localNotif.fireDate = [NSDate dateWithTimeInterval:5 sinceDate:[NSDate date]];
-    localNotif.timeZone = [NSTimeZone defaultTimeZone];
-    localNotif.alertBody = @"Hungry for some lunch? Find great nearby deals with Peeko!";
-    localNotif.soundName = UILocalNotificationDefaultSoundName;
-    localNotif.applicationIconBadgeNumber = 0;
-    [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
     
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peeko/ViewController.h"
-            timestampString = "423674229.943101"
+            timestampString = "424461725.282837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "@interface ViewController"
             landmarkType = "2">
          </BreakpointContent>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peeko/MapViewController.m"
-            timestampString = "424068469.991319"
+            timestampString = "424461725.282837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "-locationManager:didUpdateLocations:"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
+            landmarkName = "-locationManager:didFailWithError:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peeko/MapViewController.m"
-            timestampString = "424068469.991319"
+            timestampString = "424461725.282837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "-GetStoreMarkers:withLongitude:"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peeko/MapViewController.m"
-            timestampString = "424068469.991319"
+            timestampString = "424461725.282837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "124"
-            endingLineNumber = "124"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "-locationManager:didUpdateLocations:"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peeko/MapViewController.h"
-            timestampString = "424068469.991319"
+            timestampString = "424458005.370187"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "ArrayOfImages"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "locationManager"
             landmarkType = "19">
          </BreakpointContent>
       </BreakpointProxy>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peeko/MapViewController.m"
-            timestampString = "424068469.991319"
+            timestampString = "424461725.282837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "-GenerateMarkersForStoresOnMap:"
             landmarkType = "5">
             <Locations>
@@ -136,12 +136,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peeko/MapViewController.h"
-            timestampString = "424068469.991319"
+            timestampString = "424458005.370187"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "-GenerateMarkersForStoresOnMap:"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "-GetStoreMarkers:withLongitude:"
             landmarkType = "4">
          </BreakpointContent>
       </BreakpointProxy>
@@ -152,11 +152,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peeko/MapViewController.m"
-            timestampString = "424068469.991319"
+            timestampString = "424461725.282837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "305"
-            endingLineNumber = "305"
+            startingLineNumber = "439"
+            endingLineNumber = "439"
             landmarkName = "-BannerPressed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -168,11 +168,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peeko/MapViewController.m"
-            timestampString = "424069657.539196"
+            timestampString = "424461725.282837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "453"
-            endingLineNumber = "453"
+            startingLineNumber = "663"
+            endingLineNumber = "663"
             landmarkName = "-CallButtonPressed:"
             landmarkType = "5">
          </BreakpointContent>
@@ -184,13 +184,89 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Peeko/MapViewController.m"
-            timestampString = "424068469.991319"
+            timestampString = "424461725.282837"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "401"
-            endingLineNumber = "401"
+            startingLineNumber = "611"
+            endingLineNumber = "611"
             landmarkName = "-FacebookButtonPressed:"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peeko/MapViewController.m"
+            timestampString = "424461725.282837"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "426"
+            endingLineNumber = "426"
+            landmarkName = "@implementation MapViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peeko/MapViewController.m"
+            timestampString = "424461725.282837"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "356"
+            endingLineNumber = "356"
+            landmarkName = "-handlePanGesture:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Peeko/MapViewController.h"
+            timestampString = "424106873.6596"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5"
+            endingLineNumber = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MapViewController NavButton]"
+                  moduleName = "Peeko"
+                  urlString = "file:///Users/Shahruk/Desktop/Peeko/Peeko/MapViewController.h"
+                  timestampString = "424106913.303804"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[MapViewController setNavButton:]"
+                  moduleName = "Peeko"
+                  urlString = "file:///Users/Shahruk/Desktop/Peeko/Peeko/MapViewController.h"
+                  timestampString = "424106913.304141"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "16"
+                  endingLineNumber = "16"
+                  offsetFromSymbolStart = "92">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
