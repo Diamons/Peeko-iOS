@@ -37,6 +37,7 @@
 		CAAECE59194CC3F500CB305B /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAAECE58194CC3F500CB305B /* libGoogleAnalyticsServices.a */; };
 		CAAECE5C194CC42B00CB305B /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAAECE5B194CC42B00CB305B /* AdSupport.framework */; };
 		CAAECE5E194CC43100CB305B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAAECE5D194CC43000CB305B /* CoreData.framework */; };
+		CAAECE60194CD34700CB305B /* Tablet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CAAECE5F194CD34700CB305B /* Tablet.storyboard */; };
 		CAD0C7BE193FC14200742AD9 /* Appsee.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD0C7BD193FC14200742AD9 /* Appsee.framework */; };
 		CAD0C7C0193FC16400742AD9 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD0C7BF193FC16400742AD9 /* AVFoundation.framework */; };
 		CAD0C7C2193FC17A00742AD9 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD0C7C1193FC17A00742AD9 /* CoreMedia.framework */; };
@@ -100,6 +101,7 @@
 		CAAECE58194CC3F500CB305B /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		CAAECE5B194CC42B00CB305B /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		CAAECE5D194CC43000CB305B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CAAECE5F194CD34700CB305B /* Tablet.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tablet.storyboard; sourceTree = "<group>"; };
 		CAD0C7BD193FC14200742AD9 /* Appsee.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Appsee.framework; sourceTree = "<group>"; };
 		CAD0C7BF193FC16400742AD9 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CAD0C7C1193FC17A00742AD9 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -175,6 +177,7 @@
 		CA5BC711194778EA00732C62 /* iPad */ = {
 			isa = PBXGroup;
 			children = (
+				CAAECE5F194CD34700CB305B /* Tablet.storyboard */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAA5AE6F1908AFED005B36F2 /* Mapbox.bundle in Resources */,
+				CAAECE60194CD34700CB305B /* Tablet.storyboard in Resources */,
 				CAA5AE3A1908A9F6005B36F2 /* InfoPlist.strings in Resources */,
 				CA28305E1946C4CA008E936E /* PinterestSDKResources.bundle in Resources */,
 				CA426255194153E100044DF2 /* Main.storyboard in Resources */,

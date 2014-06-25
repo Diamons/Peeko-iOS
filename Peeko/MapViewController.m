@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Shahruk Khan and Minling Zhao. All rights reserved.
 //
 
+#define IPAD UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad
+
 #import "MapViewController.h"
 #import "QuartzCore/CALayer.h"
 #import <SDWebImage/UIImageView+WebCache.h>
@@ -436,7 +438,12 @@ Pinterest*  _pinterest;
         detailView.scrollEnabled = YES;
         [UIScrollView animateWithDuration: 0.5 animations: ^{
             self.NavigationTitle.topItem.title = [store objectForKey:@"name"];
-            detailView.frame = CGRectMake(0, 62, 320, self.view.frame.size.height-62);
+            if(IPAD){
+                detailView.backgroundColor = [self colorFromHexString:@"#f0fbfd"];
+                detailView.frame = CGRectMake(0, 78, 320, self.view.frame.size.height-77);
+            }else{
+                detailView.frame = CGRectMake(0, 62, 320, self.view.frame.size.height-62);
+            }
             [self GenerateFullPromoView];
 
         }];
@@ -452,18 +459,6 @@ Pinterest*  _pinterest;
 
 -(void)GenerateFullPromoView{
     
-    //ONE TIME ALERT #3
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    if (! [defaults boolForKey:@"thirdTutorial"]) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Redeeming your Offer"
-                                                        message:@"To redeem this offer simply walk in and present the offer to the cashier. No vouchers to print or buy ahead of time - it's that easy! Tap the banner again or swipe downward to return to the Peeko shopping map!"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles: nil];
-        [alert show];
-        [defaults setBool:YES forKey:@"thirdTutorial"];
-    }
-    
     int descHeight = 0;
     detailHeight = 100; //Reset height tracker to height of banner
     detailHeight += 50; //Offset
@@ -473,7 +468,9 @@ Pinterest*  _pinterest;
     bounds.origin.x = 0;
     bounds.origin.y = 0;
     detailView.bounds = bounds;
-    
+    if(IPAD){
+        detailView.backgroundColor = [self colorFromHexString:@"#f0fbfd"];
+    }
     UISwipeGestureRecognizer *gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget: self action:@selector(DetailSwiped:)];
     [gestureRecognizer setDirection: (UISwipeGestureRecognizerDirectionDown)];
     [detailView addGestureRecognizer:gestureRecognizer];
@@ -556,6 +553,18 @@ Pinterest*  _pinterest;
         UILabel *title = [[UILabel alloc] initWithFrame:CGRectMake(bannerImage, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
     }
     */
+    
+    //ONE TIME ALERT #3
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    if (! [defaults boolForKey:@"thirdTutorial"]) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Redeeming your Offer"
+                                                        message:@"To redeem this offer simply walk in and present the offer to the cashier. No vouchers to print or buy ahead of time - it's that easy! Tap the banner again or swipe downward to return to the Peeko shopping map!"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles: nil];
+        [alert show];
+        [defaults setBool:YES forKey:@"thirdTutorial"];
+    }
 
 }
 
