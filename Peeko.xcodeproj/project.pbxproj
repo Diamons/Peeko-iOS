@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA0B56ED195CE4ED00809154 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA0B56EC195CE4ED00809154 /* Parse.framework */; };
 		CA28305D1946C4CA008E936E /* Pinterest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA28305A1946C4CA008E936E /* Pinterest.framework */; };
 		CA28305E1946C4CA008E936E /* PinterestSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA28305C1946C4CA008E936E /* PinterestSDKResources.bundle */; };
 		CA2944B7191D086A0075D831 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA2944B6191D086A0075D831 /* MapKit.framework */; };
@@ -59,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CA0B56EC195CE4ED00809154 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		CA28305A1946C4CA008E936E /* Pinterest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Pinterest.framework; sourceTree = "<group>"; };
 		CA28305C1946C4CA008E936E /* PinterestSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PinterestSDKResources.bundle; sourceTree = "<group>"; };
 		CA2944B6191D086A0075D831 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -139,6 +141,7 @@
 				CAAECE59194CC3F500CB305B /* libGoogleAnalyticsServices.a in Frameworks */,
 				CAA5AE341908A9F6005B36F2 /* UIKit.framework in Frameworks */,
 				CAA5AE301908A9F6005B36F2 /* Foundation.framework in Frameworks */,
+				CA0B56ED195CE4ED00809154 /* Parse.framework in Frameworks */,
 				CAA5AE651908AEB4005B36F2 /* Mapbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -206,6 +209,7 @@
 		CAA5AE2E1908A9F6005B36F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA0B56EC195CE4ED00809154 /* Parse.framework */,
 				CAAECE5D194CC43000CB305B /* CoreData.framework */,
 				CAAECE5B194CC42B00CB305B /* AdSupport.framework */,
 				CAA5AE641908AEB4005B36F2 /* Mapbox.framework */,

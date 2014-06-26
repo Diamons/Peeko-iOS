@@ -440,7 +440,7 @@ Pinterest*  _pinterest;
             self.NavigationTitle.topItem.title = [store objectForKey:@"name"];
             if(IPAD){
                 detailView.backgroundColor = [self colorFromHexString:@"#f0fbfd"];
-                detailView.frame = CGRectMake(0, 78, 320, self.view.frame.size.height-77);
+                detailView.frame = CGRectMake(0, 78q, 320, self.view.frame.size.height-77);
             }else{
                 detailView.frame = CGRectMake(0, 62, 320, self.view.frame.size.height-62);
             }

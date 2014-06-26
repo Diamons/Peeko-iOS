@@ -30,9 +30,11 @@
     //[[UIView appearance] setTintColor: [UIColor blueColor]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [Appsee start:@"f9cc3c2003d14348ada56c4116131f7b"];
-    
+    [Parse setApplicationId:@"qmYL1VH6eSimAtoTYGmSEwuqavwwqnZIwGloD64b"
+                  clientKey:@"OqRlszvbMOD859maK7DCQgbB9KH3xypbfM9u9R8n"];
     [FBAppEvents activateApp];
-    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    /*
+     UILocalNotification *localNotif = [[UILocalNotification alloc] init];
     localNotif.fireDate = [NSDate dateWithTimeInterval:60*60*24*3 sinceDate:[NSDate date]];
     localNotif.timeZone = [NSTimeZone defaultTimeZone];
     localNotif.alertBody = @"Hungry for some lunch? Find great nearby deals with Peeko!";
