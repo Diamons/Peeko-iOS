@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Appsee/Appsee.h>
+#import "heapiOS/Heap.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
 //#import <Socialize/Socialize.h>

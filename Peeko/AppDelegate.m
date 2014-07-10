@@ -29,10 +29,13 @@
     
     //[[UIView appearance] setTintColor: [UIColor blueColor]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [Appsee start:@"f9cc3c2003d14348ada56c4116131f7b"];
+    [Heap setAppId:@"2590021467"];
     [Parse setApplicationId:@"qmYL1VH6eSimAtoTYGmSEwuqavwwqnZIwGloD64b"
                   clientKey:@"OqRlszvbMOD859maK7DCQgbB9KH3xypbfM9u9R8n"];
     [FBAppEvents activateApp];
+    [application registerForRemoteNotificationTypes:UIRemoteNotificationTypeBadge|
+     UIRemoteNotificationTypeAlert|
+     UIRemoteNotificationTypeSound];
     /*
      UILocalNotification *localNotif = [[UILocalNotification alloc] init];
     localNotif.fireDate = [NSDate dateWithTimeInterval:60*60*24*3 sinceDate:[NSDate date]];
@@ -41,6 +44,7 @@
     localNotif.soundName = UILocalNotificationDefaultSoundName;
     localNotif.applicationIconBadgeNumber = 0;
     [[UIApplication sharedApplication] scheduleLocalNotification:localNotif];
+     */
     // Override point for customization after application launch.
     return YES;
 }
@@ -85,7 +89,19 @@
     return wasHandled;
 }
 
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    // Store the deviceToken in the current installation and save it to Parse.
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation setDeviceTokenFromData:deviceToken];
+    [currentInstallation saveInBackground];
+}
 
+- (void)application:(UIApplication *)application
+didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    [PFPush handlePush:userInfo];
+}
 
 
 @end
